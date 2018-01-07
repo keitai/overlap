@@ -1,13 +1,14 @@
 <% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+    <li class="name"><%= link_to 'Therapists', therapists_path %></li>
+	<li class="Overlaps"><%= link_to 'Overlaps', appointments_path %></li>
+  <% if current_user.try(:admin?) %>
+    <li><%= link_to 'Trainers', users_path %></li>
+  <% end %>
+<% end %>
+<% if user_signed_in? %>
+  <li><%= link_to 'Your account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
-<% end %>
-<% if user_signed_in? %>
-  <% if current_user.try(:admin?) %>
-    <li><%= link_to 'Admin', '/admin' %></li>
-    <li><%= link_to 'Users', users_path %></li>
-  <% end %>
 <% end %>
