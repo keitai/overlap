@@ -1,5 +1,10 @@
 <div class="row collapse">
-<h3 class="left">Overlaps</h3>
+<h3 class="left">
+	Overlaps
+	<% if params[:therapist_id] %>
+	for: <%= @therapist.fullname %>
+	<% end %>
+</h3>
 <%= link_to 'Add an Overlap', new_appointment_path, :class => "button small right" %>
 </div>
 
@@ -17,7 +22,7 @@
   <tbody>
     <% @appointments.each do |overlap| %>
       <tr>
-        <td data-label="Therapist Name"><%= overlap.therapist.fullname %></td>
+        <td data-label="Therapist Name"><%= link_to overlap.therapist.fullname, appointment_path(overlap) %></td>
 		<td data-label="Trainer"><%= overlap.user.name %></td>
 		<td data-label="Score"><%= overlap.score %></td>
 		<td data-label="Edit Links"><%= link_to 'Edit Overlap Info', edit_appointment_path(overlap) %></td>

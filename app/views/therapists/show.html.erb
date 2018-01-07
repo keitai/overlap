@@ -24,7 +24,7 @@
           <strong><%= @therapist.email %></strong><br />
 		  <%= @therapist.phone_number %>
 		  <br />
-		  <%= link_to pluralize(@overlaps.count, 'overlap'), appointments_path %>
+		  <%= link_to pluralize(@overlaps.count, 'overlap'), appointments_path(:therapist_id => @therapist) %>
 		  <br />
 		  <%= link_to "Edit Therapist Info", edit_therapist_path(@therapist) %>
         </p>

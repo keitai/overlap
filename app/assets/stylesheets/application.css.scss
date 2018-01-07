@@ -38,13 +38,13 @@ body {
 }
 
 .responsive-card-table th {
-  background-color: #e6e6e6;
+  background-color: #efefef;
 }
 
 .responsive-card-table tr,
 .responsive-card-table th,
 .responsive-card-table td {
-  border: 1px solid #0a0a0a;
+  border: 1px solid #eee;
 }
 
 @media screen and (max-width: 640px) {
@@ -57,7 +57,7 @@ body {
     left: -9999em;
   }
   .responsive-card-table tr {
-    border: 1px solid #0a0a0a;
+    border: 1px solid #efefef;
     display: block;
   }
   .responsive-card-table tr + tr {
@@ -74,7 +74,7 @@ body {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
-    border-bottom: 1px solid #0a0a0a;
+    border-bottom: 1px solid #eee;
     padding-left: 50%;
     position: relative;
   }
@@ -91,7 +91,7 @@ body {
   .responsive-card-table td:after {
     content: '';
     position: absolute;
-    background: #e6e6e6;
+    background: #eee;
     width: 45%;
     height: 95%;
     left: 1px;

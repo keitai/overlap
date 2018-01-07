@@ -4,7 +4,13 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
+    
+    if params[:therapist_id]
+    @appointments = Appointment.where(therapist_id: params[:therapist_id])      
+    @therapist = Therapist.find(params[:therapist_id])    
+    else
     @appointments = Appointment.all
+    end
   end
 
   # GET /appointments/1

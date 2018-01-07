@@ -1,4 +1,61 @@
-<p id="notice"><%= notice %></p>
+
+	  <div class="row collapse">		  
+	  Therapist Name: <%= @appointment.therapist.fullname %> <br />
+	  Trainer Name: <%= @appointment.user.name %><br />
+	  Overlap Score: <%= @appointment.score %>
+	  </div>
+	  <hr >
+	  <div class="row collapse">
+	  <p>General Notes:</p>
+	  <p><%= @appointment.general_notes %></p>
+	  </div>	  
+	  <div class="row collapse">
+	  <p>Administrative Notes:</p>
+	  <p>	  <%= @appointment.administrative_notes %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Administrative Score:</p>		  
+	  <p>	  <%= @appointment.administrative_score %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Behavior Management Notes:</p>		  
+	  <p>	  <%= @appointment.behavior_management_notes %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Behavior Management Score:</p>		  
+	  <p>	  <%= @appointment.behavior_management_score %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Language Promotion Notes:</p>		  		  
+	  <p>	  <%= @appointment.language_promotion_notes %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Language Promotion Score:</p>		  		  		  
+	  <p>	  <%= @appointment.language_promotion_score %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Structured Lesson Notes:</p>		  		  		  
+	  <p>	  <%= @appointment.structured_lesson_notes %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Structured Lesson Score:</p>		  		  		  		  
+	  <p>	  <%= @appointment.structured_lesson_score %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Natural Environment Notes:</p>		  		  		  		  
+	  <p>	  <%= @appointment.natural_environment_notes %></p>
+	  </div>
+	  <div class="row collapse">
+	  <p>Natural Environment Score:</p>		  		  		  		  
+	  <p>	  <%= @appointment.natural_environment_score %></p>
+	  </div>
+
+	  
+
+
+
+
+
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |
 <%= link_to 'Back', appointments_path %>
