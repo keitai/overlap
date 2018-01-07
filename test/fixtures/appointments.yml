@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session_length: 1
+  general_notes: MyText
+  behavior_management_notes: MyText
+  behavior_management_score: 1
+  structured_lesson_notes: MyText
+  structured_lesson_score: 1
+  natural_environment_notes: MyText
+  natural_environment_score: 1
+  administrative_notes: MyText
+  administrative_score: 1
+  language_promotion_notes: MyText
+  language_promotion_score: 1
+
+two:
+  session_length: 1
+  general_notes: MyText
+  behavior_management_notes: MyText
+  behavior_management_score: 1
+  structured_lesson_notes: MyText
+  structured_lesson_score: 1
+  natural_environment_notes: MyText
+  natural_environment_score: 1
+  administrative_notes: MyText
+  administrative_score: 1
+  language_promotion_notes: MyText
+  language_promotion_score: 1

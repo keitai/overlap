@@ -10,7 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228205027) do
+ActiveRecord::Schema.define(version: 20180106055924) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer "session_length"
+    t.text "general_notes"
+    t.text "behavior_management_notes"
+    t.integer "behavior_management_score"
+    t.text "structured_lesson_notes"
+    t.integer "structured_lesson_score"
+    t.text "natural_environment_notes"
+    t.integer "natural_environment_score"
+    t.text "administrative_notes"
+    t.integer "administrative_score"
+    t.text "language_promotion_notes"
+    t.integer "language_promotion_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "therapist_id"
+    t.integer "user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id"
+    t.integer "therapist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "therapists", force: :cascade do |t|
+    t.string "email"
+    t.string "phone_number"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "lcation"
+    t.string "location"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

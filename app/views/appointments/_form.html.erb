@@ -1,0 +1,61 @@
+<%= simple_form_for(@appointment) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+	  <div class="row collapse">
+	  <%= f.hidden_field :user_id, :value => current_user.id %>
+		  
+	  <%= f.label "Therapist Name" %>
+	  <%= collection_select(:appointment, :therapist_id, Therapist.all, :id, :fullname, prompt: "Select a Therapist")
+%>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.label "General Notes" %>
+		  <%= f.text_area :general_notes, cols: "30", rows: "5" %>
+	  </div>	  
+	  <div class="row collapse">
+		  <%= f.label "Administrative Notes" %>
+		  <%= f.text_area :administrative_notes, cols: "30", rows: "5" %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.input :administrative_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.label "Behavior Management Notes" %>
+		  <%= f.text_area :behavior_management_notes, cols: "30", rows: "5" %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.input :behavior_management_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.label "Language Promotion Notes" %>
+		  <%= f.text_area :language_promotion_notes, cols: "30", rows: "5" %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.input :language_promotion_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.label "Structured Lesson Notes" %>
+		  <%= f.text_area :structured_lesson_notes, cols: "30", rows: "5" %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.input :structured_lesson_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.label "Natural Environment Notes" %>
+		  <%= f.text_area :natural_environment_notes, cols: "30", rows: "5" %>
+	  </div>
+	  <div class="row collapse">
+		  <%= f.input :natural_environment_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
+	  </div>
+
+	  
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "right tiny" %>
+  </div>
+<% end %>
+
+
+

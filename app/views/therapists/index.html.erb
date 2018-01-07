@@ -1,0 +1,33 @@
+<div class="row collapse">
+<h1 class="left">Therapists</h1>
+<%= link_to 'Add a Therapist', new_therapist_path, :class => "button small right" %>
+</div>
+
+
+<table class="responsive-card-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+	  <th>Email</th>
+	  <th>Location</th>
+	  <th>Phone Number</th>
+	  <th>Admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @therapists.each do |therapist| %>
+      <tr>
+        <td data-label="Full Name"><%= link_to therapist.fullname, therapist %></td>
+		<td data-label="Email"><%= therapist.email %></td>
+		<td data-label="Location"><%= therapist.location %></td>
+		<td data-label="Phone Number"><%= therapist.phone_number %></td>
+		<td data-label="Edit Links"><%= link_to 'Edit Therapist Info', edit_therapist_path(therapist) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

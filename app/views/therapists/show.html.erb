@@ -1,0 +1,87 @@
+<div class="row collapse">
+
+<div class="therapist">
+	
+  <div class="add-people-header">
+    <h6 class="header-title">
+      Therapist Information
+    </h6>
+  </div>
+  <div class="row add-people-section">
+    <div class="small-12 medium-4 columns about-people">
+      <div class="about-people-avatar">
+        <img class="avatar-image" src="https://i.imgur.com/wymyKPB.jpg" alt="giraffe">
+      </div>
+      <div class="about-people-author">
+        <p class="author-name">
+			<%= @therapist.fullname %>
+        </p>
+        <p class="therapist-location">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <%= @therapist.location %>
+        </p>
+        <p class="author-mutual">
+          <strong><%= @therapist.email %></strong><br />
+		  <%= @therapist.phone_number %>
+		  <br />
+		  <%= link_to pluralize(@overlaps.count, 'overlap'), appointments_path %>
+		  <br />
+		  <%= link_to "Edit Therapist Info", edit_therapist_path(@therapist) %>
+        </p>
+      </div>    
+    </div>
+    <div class="small-12 medium-8 columns">
+
+	 <%= render 'notes/form', note: @note %>
+
+    </div>
+	
+  </div>
+
+</div> 
+
+
+</div>
+
+
+
+
+
+
+
+<hr />
+	
+<div class="row collapse">
+<p>There are <%= pluralize(@notes.count, 'note') %>:</p>
+
+<% @notes.each do |note| %>
+
+<div class="notecard">
+  <div class="add-people-header">
+    <div class="header-title">
+		<div class="row">
+		<div class="large-8 columns">
+		On <%= note.created_at.to_date.to_formatted_s(:long_ordinal) %> <%= note.user.name %> said:
+		</div>
+		<div class="large-4 columns">
+		<div class="right">
+	<%= link_to 'edit', edit_note_path(note, :therapist_id => @therapist.id) %>&nbsp;&nbsp;
+	<%= link_to 'delete', note, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</div>
+		</div>
+	</div>
+	</div>
+  </div>	
+
+  <div class="row add-people-section">
+    <div class="small-12 columns about-people">
+		<p><%= note.body %></p>
+
+	</div>
+	</div>
+
+</div>
+
+<% end %>
+</div>
+

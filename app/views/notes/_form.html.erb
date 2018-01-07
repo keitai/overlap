@@ -1,0 +1,16 @@
+<div class="comment-input-box clearfix">
+<%= simple_form_for(@note) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+	  <%= f.text_area :body, cols: "30", rows: "5" %>
+  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :therapist_id, :value => @therapist.id %>
+  
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "small right" %>
+  </div>
+<% end %>
+</div>
