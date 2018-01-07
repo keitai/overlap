@@ -3,10 +3,13 @@ Rails.application.routes.draw do
     resources :users
     root to: "users#index"
   end
-  root to: 'therapists#index'
   devise_for :users
   resources :users
   resources :therapists
   resources :notes
   resources :appointments
+  authenticated :user do
+    root to: 'therapists#index', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
 end

@@ -25,6 +25,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem 'bourbon'
+gem 'mail'
 gem 'devise'
 gem 'foundation-rails', '~> 5.5'
 gem 'high_voltage'
