@@ -1,53 +1,84 @@
 
 	  <div class="row collapse">		  
-	  Therapist Name: <%= @appointment.therapist.fullname %> <br />
-	  Trainer Name: <%= @appointment.user.name %><br />
-	  Overlap Score: <%= @appointment.score %>
-	  </div>
+	  <strong>Therapist Name:</strong> <%= @appointment.therapist.fullname %> <br />
+	  <strong>Trainer Name:</strong> <%= @appointment.user.name %><br />
+	  This is <%= @appointment.therapist.first_name %>'s <%= @appointment.overlap_number(@appointment.therapist, @appointment).ordinalize %> Overlap on <%= @appointment.created_at.strftime("%b %d, %Y") %><br />
+	  Overlap Score: <%= @appointment.score %> (max 15)<br />	  
+      </div>
 	  <hr >
 	  <div class="row collapse">
-	  <p>General Notes:</p>
-	  <p><%= @appointment.general_notes %></p>
+	  <p><strong>General Notes:</strong>&nbsp;<%= @appointment.general_notes %></p>
 	  </div>	  
 	  <div class="row collapse">
-	  <p>Administrative Notes:</p>
-	  <p>	  <%= @appointment.administrative_notes %></p>
+	  <p><strong>Administrative Notes:</strong>&nbsp;<%= @appointment.administrative_notes %></p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Administrative Score:</p>		  
-	  <p>	  <%= @appointment.administrative_score %></p>
+	  <p class="panel">
+		  <strong>
+		  Administrative Score:
+		  <% if @appointment.administrative_score.nil? %>	  
+		  Not evaluated. 
+		  <% else %>		  
+		  <%= @appointment.administrative_score %> 
+		  <% end %>
+		  </strong>
+	  </p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Behavior Management Notes:</p>		  
-	  <p>	  <%= @appointment.behavior_management_notes %></p>
+	  <p><strong>Behavior Management Notes:</strong>&nbsp;<%= @appointment.behavior_management_notes %></p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Behavior Management Score:</p>		  
-	  <p>	  <%= @appointment.behavior_management_score %></p>
+	  <p class="panel">
+		  <strong>Behavior Management Score:
+		  <% if @appointment.behavior_management_score.nil? %>	  
+		  Not evaluated. 
+		  <% else %>		  
+		  <%= @appointment.behavior_management_score %> 
+		  <% end %>
+	      </strong>
+	  </p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Language Promotion Notes:</p>		  		  
-	  <p>	  <%= @appointment.language_promotion_notes %></p>
+	  <p><strong>Language Promotion Notes:</strong>&nbsp;<%= @appointment.language_promotion_notes %></p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Language Promotion Score:</p>		  		  		  
-	  <p>	  <%= @appointment.language_promotion_score %></p>
+	  <p class="panel">
+		  <strong>
+		  Language Promotion Score:
+		  <% if @appointment.language_promotion_score.nil? %>	  
+		  Not evaluated. 
+		  <% else %>		  
+		  <%= @appointment.language_promotion_score %> 
+		  <% end %>
+		  </strong>
+	  </p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Structured Lesson Notes:</p>		  		  		  
-	  <p>	  <%= @appointment.structured_lesson_notes %></p>
+	  <p><strong>Structured Lesson Notes:</strong>&nbsp;<%= @appointment.structured_lesson_notes %></p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Structured Lesson Score:</p>		  		  		  		  
-	  <p>	  <%= @appointment.structured_lesson_score %></p>
+	  <p class="panel">
+		  <strong>
+		  Structured Lesson Score:
+		  <% if @appointment.structured_lesson_score.nil? %>	  
+		  Not evaluated. 
+		  <% else %>		  
+		  <%= @appointment.structured_lesson_score %> 
+		  <% end %>
+		  </strong>
+	  </p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Natural Environment Notes:</p>		  		  		  		  
-	  <p>	  <%= @appointment.natural_environment_notes %></p>
+	  <p><strong>Natural Environment Notes:</strong>&nbsp;<%= @appointment.natural_environment_notes %></p>
 	  </div>
 	  <div class="row collapse">
-	  <p>Natural Environment Score:</p>		  		  		  		  
-	  <p>	  <%= @appointment.natural_environment_score %></p>
+	  <p class="panel"><strong>Natural Environment Score:</strong>		  		  		  		  
+		  <% if @appointment.natural_environment_score.nil? %>	  
+		  Not evaluated. 
+		  <% else %>		  
+		  <%= @appointment.natural_environment_score %> 
+		  <% end %>
+	  </p>
 	  </div>
 
 	  
@@ -56,6 +87,5 @@
 
 
 
-
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+ 
+<%= link_to 'Back', appointments_path, :class => "button tiny right" %>
