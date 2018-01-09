@@ -10,7 +10,7 @@
   <div class="row add-people-section">
     <div class="small-12 medium-4 columns about-people">
       <div class="about-people-avatar">
-        <img class="avatar-image" src="https://i.imgur.com/wymyKPB.jpg" alt="giraffe">
+      <img class="avatar-image" src="https://i.imgur.com/wymyKPB.jpg" alt="giraffe">	  
       </div>
       <div class="about-people-author">
         <p class="author-name">
@@ -25,6 +25,7 @@
 		  <%= @therapist.phone_number %>
 		  <br />
 		  <%= link_to pluralize(@overlaps.count, 'overlap'), appointments_path(:therapist_id => @therapist) %>
+		  with an average score of: <%= @therapist.overlap_average %>
 		  <br />
 		  <%= link_to "Edit Therapist Info", edit_therapist_path(@therapist) %>
         </p>
