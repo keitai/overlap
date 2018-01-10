@@ -27,6 +27,35 @@ body {
 	margin: 0px !important;
 }
 
+/* login */
+
+.appname {
+	font-weight: bold;
+	font-size: 24px;
+	margin:25px auto;
+	width: 200px;
+	text-align:center;
+}
+
+.logform {
+	background:#fff;
+	margin:50px auto;
+}
+
+.logform p {
+	margin: 25px auto;
+}
+
+.linkage {
+  font-size:13px !important;	
+}
+
+.formbutton {
+  width:100%;
+}
+
+
+
 
 .responsive-card-table {
   border-collapse: collapse;
@@ -317,6 +346,7 @@ body {
 .notecard .view-more-people .view-more-text .view-more-link:hover, .people-you-might-know .view-more-people .view-more-text .view-more-link:focus {
   text-decoration: underline;
 }
+
 
 
 

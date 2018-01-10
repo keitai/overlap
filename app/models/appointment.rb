@@ -12,6 +12,10 @@ class Appointment < ApplicationRecord
     overlaps.index(appointment) + 1
   end
   
+  def previous
+    therapist.appointments.where("id < ?", id).last
+  end
+
   
   
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180106055924) do
+ActiveRecord::Schema.define(version: 20180109234619) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "session_length"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180106055924) do
     t.datetime "updated_at", null: false
     t.integer "therapist_id"
     t.integer "user_id"
+    t.text "goals"
   end
 
   create_table "notes", force: :cascade do |t|

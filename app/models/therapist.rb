@@ -1,6 +1,8 @@
 class Therapist < ApplicationRecord
   
   has_many :notes
+  has_many :appointments
+  
   
   
   def fullname
