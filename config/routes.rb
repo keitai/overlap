@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :therapists
   resources :notes
+  resources :goals
   resources :appointments
   authenticated :user do
     root to: 'therapists#index', as: :authenticated_root

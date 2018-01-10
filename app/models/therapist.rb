@@ -2,6 +2,7 @@ class Therapist < ApplicationRecord
   
   has_many :notes
   has_many :appointments
+  has_many :goals
   
   
   

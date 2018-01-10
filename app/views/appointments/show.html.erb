@@ -1,5 +1,5 @@
 
-	  <div class="row collapse">		  
+	  <div class="row expanded columns">
 	  <strong>Therapist Name:</strong> <%= @appointment.therapist.fullname %> <br />
 	  <strong>Trainer Name:</strong> <%= @appointment.user.name %><br />
 	  This is <%= @appointment.therapist.first_name %>'s <%= @appointment.overlap_number(@appointment.therapist, @appointment).ordinalize %> Overlap on <%= @appointment.created_at.strftime("%b %d, %Y") %><br />
@@ -7,17 +7,14 @@
 	  <%= link_to "Edit this overlap", edit_appointment_path(@appointment) %>
       </div>
 	  <hr >
-	  <div class="row collapse">
-	  <p><strong>Goals for Next Session:</strong>&nbsp;<%= simple_format(@appointment.goals) %></p>
-	  </div>
-	  <div class="row collapse">
+	  <div class="row expanded columns">
 	  <p><strong>General Notes:</strong>&nbsp;<%= simple_format(@appointment.general_notes) %></p>
 	  </div>	  
-	  <div class="row collapse">
+	  <div class="row expanded columns">
 	  <p><strong>Administrative Notes:</strong>&nbsp;<%= @appointment.administrative_notes %></p>
 	  </div>
-	  <div class="row collapse">
-	  <p class="panel">
+	  <div class="row expanded columns">
+	  <p class="callout">
 		  <strong>
 		  Administrative Score:
 		  <% if @appointment.administrative_score.nil? %>	  
@@ -28,11 +25,11 @@
 		  </strong>
 	  </p>
 	  </div>
-	  <div class="row collapse">
+	  <div class="row expanded columns">
 	  <p><strong>Behavior Management Notes:</strong>&nbsp;<%= simple_format(@appointment.behavior_management_notes) %></p>
 	  </div>
-	  <div class="row collapse">
-	  <p class="panel">
+	  <div class="row expanded columns">
+	  <p class="callout">
 		  <strong>Behavior Management Score:
 		  <% if @appointment.behavior_management_score.nil? %>	  
 		  Not evaluated. 
@@ -42,11 +39,11 @@
 	      </strong>
 	  </p>
 	  </div>
-	  <div class="row collapse">
+	  <div class="row expanded columns">
 	  <p><strong>Language Promotion Notes:</strong>&nbsp;<%= simple_format(@appointment.language_promotion_notes) %></p>
 	  </div>
-	  <div class="row collapse">
-	  <p class="panel">
+	  <div class="row expanded columns">
+	  <p class="callout">
 		  <strong>
 		  Language Promotion Score:
 		  <% if @appointment.language_promotion_score.nil? %>	  
@@ -57,11 +54,11 @@
 		  </strong>
 	  </p>
 	  </div>
-	  <div class="row collapse">
+	  <div class="row expanded columns">
 	  <p><strong>Structured Lesson Notes:</strong>&nbsp;<%= simple_format(@appointment.structured_lesson_notes) %></p>
 	  </div>
-	  <div class="row collapse">
-	  <p class="panel">
+	  <div class="row expanded columns">
+	  <p class="callout">
 		  <strong>
 		  Structured Lesson Score:
 		  <% if @appointment.structured_lesson_score.nil? %>	  
@@ -72,11 +69,11 @@
 		  </strong>
 	  </p>
 	  </div>
-	  <div class="row collapse">
+	  <div class="row expanded columns">
 	  <p><strong>Natural Environment Notes:</strong>&nbsp;<%= simple_format(@appointment.natural_environment_notes) %></p>
 	  </div>
-	  <div class="row collapse">
-	  <p class="panel"><strong>Natural Environment Score:</strong>		  		  		  		  
+	  <div class="row expanded columns">
+	  <p class="callout"><strong>Natural Environment Score:</strong>		  		  		  		  
 		  <% if @appointment.natural_environment_score.nil? %>	  
 		  Not evaluated. 
 		  <% else %>		  
@@ -92,4 +89,4 @@
 
 
  
-<%= link_to 'Back', appointments_path, :class => "button tiny right" %>
+<%= link_to 'Back', appointments_path, :class => "button small float-right" %>

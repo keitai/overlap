@@ -1,0 +1,27 @@
+<h5 class="float-left">Goals <% if params[:therapist_id] %>for <%= @therapist.fullname %> <% end %></h5>
+<%= link_to "Add Goal for #{@therapist.fullname}", new_goal_path(:therapist_id => @therapist), :class => "button small float-right" %>
+
+<table class="responsive-card-table">
+  <thead>
+    <tr>
+	  <th class="large-7 columns">Description</th>
+	  <th class="large-3 columns">Status</th>
+	  <th class="large-2 columns">Admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+  		<td data-label="Description" class="large-7 columns"><%= goal.body %></td>		  
+		<td data-label="Status" class="large-3 columns"><%= goal.status %></td>
+		<td data-label="Edit Links" class="large-2 columns"><%= link_to 'Edit Goal', edit_goal_path(goal, :therapist_id => @therapist) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+

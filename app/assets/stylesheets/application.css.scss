@@ -12,15 +12,26 @@
  *
  *= require_tree .
  *= require_self
+//= require foundation_and_overrides
+
  */
 
 body {
 	color:#333;
 }
 
+.top-bar {
+	font-size:13px !important;
+	border-bottom:1px solid #eee;
+}
+
+.top-bar, .top-bar-left, .top-bar-right, .menu {
+	background:#fff !important;	
+}
+
 .container {
-  padding: 50px;
-  margin:auto;
+  padding-top: 50px;
+  padding-bottom:200px;
 }
 
 .comment {
@@ -47,7 +58,8 @@ body {
 }
 
 .linkage {
-  font-size:13px !important;	
+  font-size:13px !important;
+
 }
 
 .formbutton {
@@ -58,76 +70,9 @@ body {
 
 
 .responsive-card-table {
-  border-collapse: collapse;
   width:100%;
 }
 
-.responsive-card-table.unstriped tbody {
-  background-color: transparent;
-}
-
-.responsive-card-table th {
-  background-color: #efefef;
-}
-
-.responsive-card-table tr,
-.responsive-card-table th,
-.responsive-card-table td {
-  border: 1px solid #eee;
-}
-
-@media screen and (max-width: 640px) {
-  .responsive-card-table {
-    
-  }
-  .responsive-card-table thead tr {
-    position: absolute;
-    top: -9999em;
-    left: -9999em;
-  }
-  .responsive-card-table tr {
-    border: 1px solid #efefef;
-    display: block;
-  }
-  .responsive-card-table tr + tr {
-    margin-top: 1.5rem;
-  }
-  .responsive-card-table td {
-    border: none;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: flex-start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-left: 50%;
-    position: relative;
-  }
-  .responsive-card-table td:before {
-    content: attr(data-label);
-    display: inline-block;
-    font-weight: bold;
-    line-height: 1.5;
-    margin-left: -100%;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-  }
-  .responsive-card-table td:after {
-    content: '';
-    position: absolute;
-    background: #eee;
-    width: 45%;
-    height: 95%;
-    left: 1px;
-    top: 1px;
-    z-index: 0;
-  }
-}
 
 
 .comment-input-box {
@@ -142,10 +87,11 @@ body {
   padding: .5rem 0 0;
   border: 1px solid #cacaca;
   box-shadow: 0 0 1.125rem rgba(0, 0, 0, 0.18);
+  width:100%;
 }
 
 .therapist .add-people-header {
-  padding: 0 0.9375rem;
+  padding: 0 1.5rem;
   border-bottom: 0.0625rem solid #cacaca;
 }
 
@@ -259,6 +205,7 @@ body {
 
 .notecard .add-people-header .header-title {
   font-weight: normal;
+  padding:0 1rem;
 }
 
 .notecard .add-people-section {

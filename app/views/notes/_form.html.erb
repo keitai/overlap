@@ -1,4 +1,5 @@
 <div class="comment-input-box clearfix">
+	
 <%= simple_form_for(@note) do |f| %>
   <%= f.error_notification %>
 
@@ -10,7 +11,9 @@
   
 
   <div class="form-actions">
-    <%= f.button :submit, :class => "small right" %>
+    <%= f.button :submit, :class => "small float-right" %>
   </div>
+  
 <% end %>
+
 </div>

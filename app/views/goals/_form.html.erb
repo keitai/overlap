@@ -1,0 +1,21 @@
+<%= simple_form_for(@goal) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+	  <%= f.label :body, "Description of Goal"%>
+	  <%= f.text_area :body, cols: "30", rows: "5" %>
+	  <%= f.label :status, "Status"%>
+	  <%= f.select :status, Goal.statuses.keys %>
+	  
+	  <%= f.hidden_field :user_id, :value => current_user.id %>
+	  <%= f.hidden_field :therapist_id, :value => @therapist.id%>
+
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "float-right small" %>
+  </div>
+<% end %>
+
+

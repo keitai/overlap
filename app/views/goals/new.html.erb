@@ -1,0 +1,6 @@
+<h5>New Goal for <%= @therapist.fullname %></h5>
+
+<%= render 'form', goal: @goal %>
+
+<%= link_to 'Back', goals_path(:therapist_id => @therapist) %>
+

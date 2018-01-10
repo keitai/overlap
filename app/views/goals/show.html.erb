@@ -1,0 +1,9 @@
+<p><strong>Goal For:</strong> <%= @goal.therapist.fullname %></p>
+<p><strong>Goal Description:</strong> <%= @goal.body %></p>
+
+<p><strong>Status: </strong><%= @goal.status %></p>
+
+<div>
+<%= link_to "View more goals for #{@goal.therapist.fullname}", goals_path(:therapist_id => @goal.therapist.id ) %> | <%= link_to 'Edit this goal', edit_goal_path(@goal, :therapist_id => @goal.therapist.id ) %> 
+
+</div>
