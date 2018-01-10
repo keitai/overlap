@@ -5,7 +5,10 @@
   <div class="add-people-header">
     <h6 class="header-title">
       Therapist Information
+	  <div class="float-right"><%= link_to "Edit Therapist Info", edit_therapist_path(@therapist) %></div>
     </h6>
+
+	
   </div>
   <div class="row add-people-section">
     <div class="small-12 medium-4 columns about-people">
@@ -31,9 +34,8 @@
 		  	with an average score of: <%= @therapist.overlap_average %>
 		  	<% end %>
 		  <br />
-		  <%= link_to "View Goals", goals_path(:therapist_id => @therapist) %>		  
+		  <%= link_to "View Goals", goals_path(:therapist_id => @therapist) %> <%= @therapist.goals().count %>
 		  <br />
-		  <%= link_to "Edit Therapist Info", edit_therapist_path(@therapist) %>
         </p>
       </div>    
     </div>

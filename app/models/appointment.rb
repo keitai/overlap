@@ -4,7 +4,7 @@ class Appointment < ApplicationRecord
   
   
   def score
-    return [self.behavior_management_score, self.natural_environment_score, self.behavior_management_score, self.structured_lesson_score, self.language_promotion_score].compact.sum
+    return [self.administrative_score, self.natural_environment_score, self.behavior_management_score, self.structured_lesson_score, self.language_promotion_score].compact.sum
   end
   
   def overlap_number(therapist, appointment)
