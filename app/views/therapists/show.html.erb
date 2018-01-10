@@ -25,7 +25,11 @@
 		  <%= @therapist.phone_number %>
 		  <br />
 		  <%= link_to pluralize(@overlaps.count, 'overlap'), appointments_path(:therapist_id => @therapist) %>
-		  with an average score of: <%= @therapist.overlap_average %>
+		  	<% if @therapist.appointments.empty? %>
+
+		  	<% else %>
+		  	with an average score of: <%= @therapist.overlap_average %>
+		  	<% end %>
 		  <br />
 		  <%= link_to "View Goals", goals_path(:therapist_id => @therapist) %>		  
 		  <br />
@@ -33,6 +37,8 @@
         </p>
       </div>    
     </div>
+	
+
 	
     <div class="small-12 medium-8 columns">
 

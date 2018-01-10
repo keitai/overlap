@@ -2,7 +2,12 @@
 		<%= select_tag 'therapist_id', options_from_collection_for_select(@therapists.sort, "id", "fullname"), :prompt=>"Filter By Therapist", :style => "min-width:300px" %>	
 	<% if params[:therapist_id] %>
 	<strong>Overlaps for:&nbsp;</strong><%= @therapist.fullname %>
-	<br /><%= pluralize(@appointments.count, 'overlap') %> with an average score of: <%= @therapist.overlap_average %>
+	<br /><%= pluralize(@appointments.count, 'overlap') %>
+  	<% if @therapist.appointments.empty? %>
+
+  	<% else %>
+  	with an average score of: <%= @therapist.overlap_average %>
+  	<% end %>
 	<% end %>
 	<br />		
 	<br />
