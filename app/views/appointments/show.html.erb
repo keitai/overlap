@@ -2,7 +2,7 @@
 	  <div class="row expanded columns">
 	  <strong>Therapist Name:</strong> <%= @appointment.therapist.fullname %> <br />
 	  <strong>Trainer Name:</strong> <%= @appointment.user.name %><br />
-
+	  <strong>Client Name:</strong> <%= @appointment.client.initials %><br />	  
 	  This is <%= @appointment.therapist.first_name %>'s <%= @appointment.overlap_number(@appointment.therapist, @appointment).ordinalize %> Overlap on <%= @appointment.created_at.strftime("%b %d, %Y") %><br />
 	  Overlap Score: <%= @appointment.score %> (max 15)<br />	  
 	  <%= link_to "Edit this overlap", edit_appointment_path(@appointment) %>

@@ -32,7 +32,7 @@
       <tr>
   		<td data-label="Overlap"><%= link_to overlap.therapist.fullname, appointment_path(overlap) %>&nbsp;<%= link_to "#{overlap.overlap_number(overlap.therapist, overlap).ordinalize} Overlap", appointment_path(overlap) %></td>		  
 		<td data-label="Date"><%= overlap.created_at.strftime("%b %d, %Y") %></td>
-
+		<td data-label="Client"><%= overlap.client.initials %></td>		
 		<td data-label="Trainer"><%= overlap.user.name %></td>
 		<td data-label="Score"><%= overlap.score %></td>
 		<td data-label="Edit Links"><%= link_to 'Edit Overlap Info', edit_appointment_path(overlap) %></td>
