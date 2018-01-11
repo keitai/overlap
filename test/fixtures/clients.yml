@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  initials: MyString
+  supervisor: MyString
+  supervisor_email: MyString
+  timezone: MyString
+
+two:
+  initials: MyString
+  supervisor: MyString
+  supervisor_email: MyString
+  timezone: MyString

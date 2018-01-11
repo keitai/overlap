@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110053101) do
+ActiveRecord::Schema.define(version: 20180111214150) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "session_length"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20180110053101) do
     t.integer "therapist_id"
     t.integer "user_id"
     t.text "goals"
+    t.integer "client_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "initials"
+    t.string "supervisor"
+    t.string "supervisor_email"
+    t.string "timezone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "goals", force: :cascade do |t|

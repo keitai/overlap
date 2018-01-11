@@ -6,9 +6,14 @@
 	  <%= f.hidden_field :user_id, :value => current_user.id %>
 		  
 	  <%= f.label "Therapist Name" %>
-	  <%= collection_select(:appointment, :therapist_id, Therapist.all, :id, :fullname, prompt: "Select a Therapist")
+	  <%= collection_select(:appointment, :therapist_id, @therapists, :id, :fullname, prompt: "Select a Therapist")
 %>
 	  </div>
+  	  <div class="row expanded columns">	  
+  	  <%= f.label "Client Name" %>
+  	  <%= collection_select(:appointment, :client_id, @clients, :id, :initials, prompt: "Select a Client")
+  %>
+  	  </div>
 
 	  <div class="row expanded columns">
 		  <%= f.label "General Notes" %>

@@ -21,10 +21,14 @@ class AppointmentsController < ApplicationController
   # GET /appointments/new
   def new
     @appointment = Appointment.new
+    @clients = Client.order(:initials)
+    @therapists = Therapist.order(:first_name)
   end
 
   # GET /appointments/1/edit
   def edit
+    @clients = Client.order(:initials)
+    @therapists = Therapist.order(:first_name)
   end
 
   # POST /appointments
@@ -75,7 +79,7 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:therapist_id, :user_id, :session_length, :general_notes, :behavior_management_notes, :behavior_management_score, :structured_lesson_notes, :structured_lesson_score, :natural_environment_notes, :natural_environment_score, :administrative_notes, :administrative_score, :language_promotion_notes, :language_promotion_score, :goals)  
+      params.require(:appointment).permit(:therapist_id, :user_id, :client_id, :session_length, :general_notes, :behavior_management_notes, :behavior_management_score, :structured_lesson_notes, :structured_lesson_score, :natural_environment_notes, :natural_environment_score, :administrative_notes, :administrative_score, :language_promotion_notes, :language_promotion_score, :goals)  
     end
     
 

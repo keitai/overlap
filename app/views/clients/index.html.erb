@@ -1,0 +1,31 @@
+<h5 class="float-left">Clients</h5>
+<%= link_to 'Add a Client', new_client_path, :class => "button small float-right" %>
+
+<table class="responsive-card-table">
+  <thead>
+    <tr>
+      <th>Initials</th>
+	  <th>Timezone</th>
+	  <th>Supervisor</th>
+	  <th>Supervisor Email</th>
+	  <th>Admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td data-label="Initials"><%= client.initials %></td>
+		<td data-label="Timezone"><%= client.timezone %></td>
+		<td data-label="Supervisor"><%= client.supervisor %></td>
+		<td data-label="Supervisor Email"><%= client.supervisor_email %></td>
+		<td data-label="Edit Links"><%= link_to 'Edit Client Info', edit_client_path(client) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+

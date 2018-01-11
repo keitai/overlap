@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
     <li class="name"><%= link_to 'Therapists', therapists_path %></li>
 	<li class="Overlaps"><%= link_to 'Overlaps', appointments_path %></li>
+    <li class="name"><%= link_to 'Clients', clients_path %></li>	
   <% if current_user.try(:admin?) %>
     <li><%= link_to 'Trainers', users_path %></li>
   <% end %>
