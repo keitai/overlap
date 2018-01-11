@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-	 <%= f.input :initials %>
+	 <%= f.input :initials, maxlength: 2 %>
 	 <p class="help-text" id="initials">For privacy reasons we only allow 2 characters.</p>	 
 	 <%= f.input :timezone %>
 	 <p class="help-text" id="timezone">PST, CST, EST, etc.</p>	 
