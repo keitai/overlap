@@ -31,6 +31,7 @@ class AppointmentsController < ApplicationController
   def edit
     @clients = Client.order(:initials)
     @therapists = Therapist.order(:first_name)
+    @goals = Goal.where(therapist_id: @appointment.therapist.id, status: :active)
 #    @skills = AppointmentSkill.where(appointment_id: @appointment.id)
     @apptskills = AppointmentSkill.where(appointment_id: @appointment.id)
     @group_by_section = @apptskills.group_by { |s| s.section_title }   

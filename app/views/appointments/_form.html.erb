@@ -24,6 +24,19 @@
 		  
   	  </div>
 	  
+   	 <div class="form-inputs grid-x grid-padding-x">
+ 	  <div class="small-12 cell">
+	  <label>Current Goals for <%= @appointment.therapist.fullname %></label>
+	  <% if @goals.empty? %>
+	  <p>No Current Goals</p>
+	  <% else %>
+	  <% @goals.each do |goal| %>	
+	  <p><%= goal.body %></p>
+	  <% end %>
+	  <% end %>
+	  </div>
+	  </div>
+	  
   	 <div class="form-inputs grid-x grid-padding-x">
 	  
 	  <div class="small-12 cell">
@@ -43,7 +56,8 @@
 	  <h5>Therapist Skills</h5>
 	  <% @group_by_section.each do |section, sectioned_skills| %>
 	  <h5><%= section %></h5>
-	  <div class="grid-x grid-padding-x fieldset">		  
+	  <div class="grid-x grid-padding-x fieldset">		
+	  <div class="smmall-12 cell margin-top-small">&nbsp;</div>
 	  <%= f.fields_for :appointment_skills, sectioned_skills do |apptskill| %>	
 	  <div class="small-3 cell text-control">
 	  <%= apptskill.object.skill.description %>	  
