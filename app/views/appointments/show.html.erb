@@ -1,87 +1,88 @@
+  <div class="form-inputs grid-x grid-padding-x">
 
-	  <div class="row expanded columns">
+	  <div class="small-12 cell">		  	  
 	  <strong>Therapist Name:</strong> <%= @appointment.therapist.fullname %> <br />
 	  <strong>Trainer Name:</strong> <%= @appointment.user.name %><br />
-	  <strong>Client Name:</strong> <%= @appointment.client.initials %><br />	  
+	  <strong>Client Name:</strong> <% if @appointment.client %><%= @appointment.client.initials %><% end %><br />	  
 	  This is <%= @appointment.therapist.first_name %>'s <%= @appointment.overlap_number(@appointment.therapist, @appointment).ordinalize %> Overlap on <%= @appointment.created_at.strftime("%b %d, %Y") %><br />
-	  Overlap Score: <%= @appointment.score %> (max 15)<br />	  
 	  <%= link_to "Edit this overlap", edit_appointment_path(@appointment) %>
       </div>
-	  <hr >
-	  <div class="row expanded columns">
-	  <p><strong>General Notes:</strong>&nbsp;<%= simple_format(@appointment.general_notes) %></p>
+	  
+
+	  
+	  <div class="small-12 cell margin-top">		  	  
+	  <p><strong>General Notes:</strong>&nbsp;
+		  <% if @appointment.general_notes? %>		  		  
+		  <%= simple_format(@appointment.general_notes) %>
+		  <% else %>
+		  No notes entered
+		  <% end %>
+	  </p>
 	  </div>	  
-	  <div class="row expanded columns">
-	  <p><strong>Administrative Notes:</strong>&nbsp;<%= simple_format(@appointment.administrative_notes) %></p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p class="callout">
-		  <strong>
-		  Administrative Score:
-		  <% if @appointment.administrative_score.nil? %>	  
-		  Not evaluated. 
-		  <% else %>		  
-		  <%= @appointment.administrative_score %> 
-		  <% end %>
-		  </strong>
-	  </p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p><strong>Behavior Management Notes:</strong>&nbsp;<%= simple_format(@appointment.behavior_management_notes) %></p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p class="callout">
-		  <strong>Behavior Management Score:
-		  <% if @appointment.behavior_management_score.nil? %>	  
-		  Not evaluated. 
-		  <% else %>		  
-		  <%= @appointment.behavior_management_score %> 
-		  <% end %>
-	      </strong>
-	  </p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p><strong>Language Promotion Notes:</strong>&nbsp;<%= simple_format(@appointment.language_promotion_notes) %></p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p class="callout">
-		  <strong>
-		  Language Promotion Score:
-		  <% if @appointment.language_promotion_score.nil? %>	  
-		  Not evaluated. 
-		  <% else %>		  
-		  <%= @appointment.language_promotion_score %> 
-		  <% end %>
-		  </strong>
-	  </p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p><strong>Structured Lesson Notes:</strong>&nbsp;<%= simple_format(@appointment.structured_lesson_notes) %></p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p class="callout">
-		  <strong>
-		  Structured Lesson Score:
-		  <% if @appointment.structured_lesson_score.nil? %>	  
-		  Not evaluated. 
-		  <% else %>		  
-		  <%= @appointment.structured_lesson_score %> 
-		  <% end %>
-		  </strong>
-	  </p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p><strong>Natural Environment Notes:</strong>&nbsp;<%= simple_format(@appointment.natural_environment_notes) %></p>
-	  </div>
-	  <div class="row expanded columns">
-	  <p class="callout"><strong>Natural Environment Score:</strong>		  		  		  		  
-		  <% if @appointment.natural_environment_score.nil? %>	  
-		  Not evaluated. 
-		  <% else %>		  
-		  <%= @appointment.natural_environment_score %> 
+	  <div class="small-12 cell">		  	  
+	  <p><strong>Administrative Notes:</strong>&nbsp;
+		  <% if @appointment.administrative_notes? %>		  
+		  <%= simple_format(@appointment.administrative_notes) %>
+		  <% else %>
+		  No notes entered
 		  <% end %>
 	  </p>
 	  </div>
+
+	   <% @group_by_section.each do |section, apptskill| %>
+		  <div class="small-12 cell margin-top">		  	  
+		 <h5><%= section %>  </h5>
+		  </div>
+		 <% apptskill.each do |a| %>
+	     <div class="small-6 cell">
+		<%= a.skill.description %> 	  	  		
+	 	  <strong><%= a.rating %></strong>
+		  </div>
+		  <% end %>
+	   <% end %>
+
+
+
+	  <div class="small-12 cell margin-top">		  	  
+	  <p><strong>Behavior Management Notes:</strong>&nbsp;
+		  <% if @appointment.behavior_management_notes? %>
+		  <%= simple_format(@appointment.behavior_management_notes) %>
+		  <% else %>
+		  No notes entered
+		  <% end %>
+	  </p>
+	  </div>
+	  
+	  <div class="small-12 cell">		  	  
+	  <p><strong>Language Promotion Notes:</strong>&nbsp;
+		  <% if @appointment.language_promotion_notes? %>		  
+		  <%= simple_format(@appointment.language_promotion_notes) %>
+		  <% else %>
+		  No notes entered
+		  <% end %>
+	  </p>
+	  </div>
+	 
+	  <div class="small-12 cell">		  	  
+	  <p><strong>Structured Lesson Notes:</strong>&nbsp;
+		  <% if @appointment.structured_lesson_notes? %>		  
+		  <%= simple_format(@appointment.structured_lesson_notes) %>
+		  <% else %>
+		  No notes entered
+		  <% end %>
+	  </p>
+	  </div>
+	 
+	  <div class="small-12 cell">		  	  
+	  <p><strong>Natural Environment Notes:</strong>&nbsp;
+		  <% if @appointment.natural_environment_notes? %>		  
+		  <%= simple_format(@appointment.natural_environment_notes) %>
+		  <% else %>
+		  No notes entered
+		  <% end %>
+	  </p>
+	  </div>
+	
 
 	  
 
@@ -91,3 +92,4 @@
 
  
 <%= link_to 'Back', appointments_path, :class => "button small float-right" %>
+</div>

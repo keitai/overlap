@@ -1,67 +1,92 @@
+
+
 <%= simple_form_for(@appointment) do |f| %>
   <%= f.error_notification %>
+  <% @appointment.errors.each do |attr, msg| %>
+  <%= "#{attr} #{msg}" if @appointment.errors[attr].first == msg %> 
+  <% end %>
 
-  <div class="form-inputs">
-	  <div class="row expanded columns">
-	  <%= f.hidden_field :user_id, :value => current_user.id %>
+ 	 <div class="form-inputs grid-x grid-padding-x">
+	 
+		  <div class="small-6 cell">
+		  <%= f.hidden_field :user_id, :value => current_user.id %>
 		  
-	  <%= f.label "Therapist Name" %>
-	  <%= collection_select(:appointment, :therapist_id, @therapists, :id, :fullname, prompt: "Select a Therapist")
-%>
-	  </div>
-  	  <div class="row expanded columns">	  
-  	  <%= f.label "Client Name" %>
-  	  <%= collection_select(:appointment, :client_id, @clients, :id, :initials, prompt: "Select a Client")
-  %>
+		  <%= f.label "Therapist Name" %>
+		  <%= collection_select(:appointment, :therapist_id, @therapists, :id, :fullname, prompt: "Select a Therapist")
+	%>
+		  </div>
+		  
+		  <div class="small-6 cell">
+	  	  <%= f.label "Client Name" %>
+	  	  <%= collection_select(:appointment, :client_id, @clients, :id, :initials, prompt: "Select a Client")
+	  %>
+	  	  </div>
+		  
   	  </div>
-
-	  <div class="row expanded columns">
+	  
+  	 <div class="form-inputs grid-x grid-padding-x">
+	  
+	  <div class="small-12 cell">
 		  <%= f.label "General Notes" %>
 		  <%= f.text_area :general_notes, cols: "30", rows: "5" %>
 	  </div>	  
-	  <div class="row expanded columns">
+	  <div class="small-12 cell">
 		  <%= f.label "Administrative Notes" %>
 		  <%= f.text_area :administrative_notes, cols: "30", rows: "5" %>
 	  </div>
-	  <div class="row expanded columns">
-		  <%= f.input :administrative_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
 	  </div>
-	  <div class="row expanded columns">
+	  
+	  <hr >
+
+
+
+	  <h5>Therapist Skills</h5>
+	  <% @group_by_section.each do |section, sectioned_skills| %>
+	  <h5><%= section %></h5>
+	  <div class="grid-x grid-padding-x fieldset">		  
+	  <%= f.fields_for :appointment_skills, sectioned_skills do |apptskill| %>	
+	  <div class="small-3 cell text-control">
+	  <%= apptskill.object.skill.description %>	  
+	  </div>
+	  <div class="small-3 cell ">	  
+ 	  <%= apptskill.input :rating, :collection => [['Yes',:Yes], ['No',:No], ['N/A',:NA]], as: :radio_buttons, item_wrapper_class: "float-left radio-spacer", label: false %>
+	   </div>	  
+	   <% end %>			
+       </div>	   	   		    
+	   <% end %>
+			
+
+	  <hr >
+	  
+	  <h5>Overlap Notes</h5>
+	  
+  <div class="form-inputs grid-x grid-padding-x">
+	  
+	  <div class="small-12 cell">
 		  <%= f.label "Behavior Management Notes" %>
 		  <%= f.text_area :behavior_management_notes, cols: "30", rows: "5" %>
 	  </div>
-	  <div class="row expanded columns">
-		  <%= f.input :behavior_management_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
-	  </div>
-	  <div class="row expanded columns">
+
+	  <div class="small-12 cell">
 		  <%= f.label "Language Promotion Notes" %>
 		  <%= f.text_area :language_promotion_notes, cols: "30", rows: "5" %>
 	  </div>
-	  <div class="row expanded columns">
-		  <%= f.input :language_promotion_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
-	  </div>
-	  <div class="row expanded columns">
+
+	  <div class="small-12 cell">
 		  <%= f.label "Structured Lesson Notes" %>
 		  <%= f.text_area :structured_lesson_notes, cols: "30", rows: "5" %>
 	  </div>
-	  <div class="row expanded columns">
-		  <%= f.input :structured_lesson_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
-	  </div>
-	  <div class="row expanded columns">
+
+	  <div class="small-12 cell">
 		  <%= f.label "Natural Environment Notes" %>
 		  <%= f.text_area :natural_environment_notes, cols: "30", rows: "5" %>
 	  </div>
-	  <div class="row expanded columns">
-		  <%= f.input :natural_environment_score, :collection => [['Needs Work',1],['Acceptable',2],['Exceeds Standards',3]] %>
-	  </div>
-
 
   </div>
-
+  
   <div class="form-actions">
     <%= f.button :submit, :class => "float-right small" %>
   </div>
 <% end %>
-
 
 

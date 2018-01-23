@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111214150) do
+ActiveRecord::Schema.define(version: 20180123060018) do
+
+  create_table "appointment_skills", force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "appointment_id"
+    t.integer "rating"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "section_id"
+    t.string "section_title"
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.integer "session_length"
@@ -57,6 +68,21 @@ ActiveRecord::Schema.define(version: 20180111214150) do
     t.integer "therapist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "priority"
+    t.integer "section_id"
+    t.string "section_title"
   end
 
   create_table "therapists", force: :cascade do |t|

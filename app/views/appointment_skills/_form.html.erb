@@ -1,0 +1,12 @@
+<%= simple_form_for(@appointment_skill) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+	  <%= f.input :rating%>
+	  <%= f.input :appointment_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

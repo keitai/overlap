@@ -1,0 +1,22 @@
+<%= simple_form_for(@skill) do |f| %>
+  <%= f.error_notification %>
+  <% @skill.errors.each do |attr, msg| %>
+  <%= "#{attr} #{msg}" if @skill.errors[attr].first == msg %> 
+  <% end %>
+  
+
+    <div class="form-inputs grid-x grid-padding-x">
+  	  <div class="small-12 cell">
+		   	  <%= f.input :description %>
+			  <%= f.input :priority %>
+ 	 		 <%= f.collection_select :section_title, Section.all, :title, :title, {:prompt => 'Section' } %>
+			 <%= f.collection_select :section_id, Section.all, :id, :title, {:prompt => 'Section' } %>
+  	  </div>
+	  
+  
+	</div>
+
+  <div class="form-actions">	  
+    <%= f.button :submit, :class => "small float-right" %>
+  </div>
+<% end %>

@@ -31,7 +31,7 @@
 		  	<% if @therapist.appointments.empty? %>
 
 		  	<% else %>
-		  	with an average score of: <%= @therapist.overlap_average %>
+
 		  	<% end %>
 		  <br />
 		  <%= link_to "View Goals", goals_path(:therapist_id => @therapist) %>

@@ -1,0 +1,29 @@
+<h5 class="float-left">Appointment Skills</h5>
+<%= link_to 'Add a Appointment Skill', new_appointment_skill_path, :class => "button small float-right" %>
+
+<table class="responsive-card-table">
+  <thead>
+    <tr>
+      <th>Appointment ID</th>
+	  <th>Skill ID</th>
+	  <th>Rating</th>
+	  <th>Admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appointment_skills.each do |apptskill| %>
+      <tr>
+        <td data-label="Appt Appt"><%= apptskill.appointment_id %></td>
+		<td data-label="Appt Skill"><%= apptskill.skill_id %></td>
+		<td data-label="Rating"><%= apptskill.rating %></td>
+		<td data-label="Edit Links"><%= link_to 'Edit Info', edit_appointment_skill_path(apptskill) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+

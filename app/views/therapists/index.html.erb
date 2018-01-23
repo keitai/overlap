@@ -24,7 +24,7 @@
 		<% if therapist.appointments.empty? %>
 		<td data-label="Progress">No Overlaps Recorded</strong></td>
 		<% else %>
-		<td data-label="Progress"><%= pluralize(therapist.appointments.count, 'overlap')%> with an average score of: <strong><%= therapist.overlap_average %></strong></td>	
+		<td data-label="Progress"><%= pluralize(therapist.appointments.count, 'overlap')%></td>	
 		<% end %>
 		<td data-label="Location"><%= therapist.location %></td>
 		<td data-label="Phone Number"><%= therapist.phone_number %></td>

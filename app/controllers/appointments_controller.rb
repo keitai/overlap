@@ -16,6 +16,8 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.json
   def show
+    @apptskills = AppointmentSkill.where(appointment_id: @appointment.id)
+    @group_by_section = @apptskills.group_by { |s| s.section_title }    
   end
 
   # GET /appointments/new
@@ -29,16 +31,20 @@ class AppointmentsController < ApplicationController
   def edit
     @clients = Client.order(:initials)
     @therapists = Therapist.order(:first_name)
+#    @skills = AppointmentSkill.where(appointment_id: @appointment.id)
+    @apptskills = AppointmentSkill.where(appointment_id: @appointment.id)
+    @group_by_section = @apptskills.group_by { |s| s.section_title }   
   end
 
   # POST /appointments
   # POST /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
-
+    @appointment = Appointment.new appointment_params
+    @clients = Client.order(:initials)
+    @therapists = Therapist.order(:first_name)
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
+        format.html { redirect_to edit_appointment_path(@appointment), notice: 'Appointment was successfully created.' }
         format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new }
@@ -79,8 +85,13 @@ class AppointmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
-      params.require(:appointment).permit(:therapist_id, :user_id, :client_id, :session_length, :general_notes, :behavior_management_notes, :behavior_management_score, :structured_lesson_notes, :structured_lesson_score, :natural_environment_notes, :natural_environment_score, :administrative_notes, :administrative_score, :language_promotion_notes, :language_promotion_score, :goals)  
+      params.require(:appointment).permit(:therapist_id, :user_id, :client_id, :session_length, :general_notes, :behavior_management_notes, :behavior_management_score, :structured_lesson_notes, :structured_lesson_score, :natural_environment_notes, :natural_environment_score, :administrative_notes, :administrative_score, :language_promotion_notes, :language_promotion_score, :goals, appointment_skills_attributes: [:id, :appointment_id, :skill_id, :rating, :position])  
     end
+    
+
+
+    
+    
     
 
 end

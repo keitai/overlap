@@ -1,0 +1,34 @@
+<%= simple_form_for(@appointment) do |f| %>
+  <%= f.error_notification %>
+  <% @appointment.errors.each do |attr, msg| %>
+  <%= "#{attr} #{msg}" if @appointment.errors[attr].first == msg %> 
+  <% end %>
+
+  <div class="form-inputs grid-x grid-padding-x">
+	  <div class="small-6 cell">
+	  <%= f.hidden_field :user_id, :value => current_user.id %>
+		  
+	  <%= f.label "Therapist Name" %>
+	  <%= collection_select(:appointment, :therapist_id, @therapists, :id, :fullname, prompt: "Select a Therapist")
+%>
+	  </div>
+	  <div class="small-6 cell">
+  	  <%= f.label "Client Name" %>
+  	  <%= collection_select(:appointment, :client_id, @clients, :id, :initials, prompt: "Select a Client")
+  %>
+  	  </div>
+	  
+	  <div class="small-12 cell">
+		  <%= f.label "General Notes" %>
+		  <%= f.text_area :general_notes, cols: "30", rows: "5" %>
+	  </div>	  
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "float-right small" %>
+  </div>
+<% end %>
+
+
+

@@ -1,0 +1,27 @@
+<h5 class="float-left">Skills</h5>
+<%= link_to 'Add a Skill', new_skill_path, :class => "button small float-right" %>
+
+
+
+<table class="responsive-card-table">
+  <thead>
+    <tr>
+      <th>Description</th>
+	  <th>Section</th>
+	  <th>Admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @skills.each do |skill| %>
+      <tr>
+        <td data-label="Description"><%= skill.description %></td>
+        <td data-label="Section"><%= skill.section_title if skill.section_title %></td>
+		<td data-label="Edit Links"><%= link_to 'Edit Skill Info',
+			 edit_skill_path(skill) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

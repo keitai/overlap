@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :notes
   resources :goals
   resources :clients
+  resources :appointment_skills
+  resources :skills
+  resources :sections
   resources :appointments
   authenticated :user do
     root to: 'therapists#index', as: :authenticated_root

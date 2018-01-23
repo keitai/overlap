@@ -1,0 +1,8 @@
+<h5>Editing Skill</h5>
+
+<%= render 'form', skill: @skill %>
+
+<%= link_to 'Show', @skill %> |
+<%= link_to 'Back', skills_path %> | 
+<%= link_to 'Delete', @skill, method: :delete, data: { confirm: 'Are you sure?' } %>
+
