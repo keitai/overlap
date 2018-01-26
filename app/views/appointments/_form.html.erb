@@ -9,7 +9,7 @@
  	 <div class="form-inputs grid-x grid-padding-x">
 	 
 		  <div class="small-6 cell">
-		  <%= f.hidden_field :user_id, :value => current_user.id %>
+		  <%= f.hidden_field :user_id, :value => @appointment.user_id %>
 		  
 		  <%= f.label "Therapist Name" %>
 		  <%= collection_select(:appointment, :therapist_id, @therapists, :id, :fullname, prompt: "Select a Therapist")
