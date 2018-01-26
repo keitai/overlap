@@ -1,5 +1,8 @@
 <%= simple_form_for(@client) do |f| %>
   <%= f.error_notification %>
+  <% @client.errors.each do |attr, msg| %>
+  <%= "#{attr} #{msg}" if @client.errors[attr].first == msg %> 
+  <% end %>
 
   <div class="form-inputs">
 	 <%= f.input :initials, maxlength: 2 %>
