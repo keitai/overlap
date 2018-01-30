@@ -6,10 +6,10 @@ class AppointmentsController < ApplicationController
   def index
     @therapists = Therapist.all
     if params[:therapist_id]
-    @appointments = Appointment.where(therapist_id: params[:therapist_id])      
+    @appointments = Appointment.where(therapist_id: params[:therapist_id]).order("created_at")      
     @therapist = Therapist.find(params[:therapist_id])            
     else
-    @appointments = Appointment.all
+    @appointments = Appointment.order("created_at")
     end
   end
 
