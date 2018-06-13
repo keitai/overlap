@@ -1,0 +1,28 @@
+<h5 class="float-left">Videos</h5>
+<%= link_to 'Add a Video', new_video_path, :class => "button small float-right" %>
+
+
+
+<table class="responsive-card-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+	  <th>Edit Link</th>
+	  <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td data-label="Title"><%= link_to video.title, video %></td>
+		<td data-label="Edit Links"><%= link_to 'Edit', edit_video_path(video) %></td>
+		<td data-label="Description"><%= video.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

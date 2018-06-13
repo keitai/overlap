@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1.json
   def show
     @apptskills = AppointmentSkill.where(appointment_id: @appointment.id)
-    @group_by_section = @apptskills.group_by { |s| s.section_title }    
+    @group_by_section = @apptskills.group_by { |s| s.section_title }.sort_by {|t, _| t[:id]}
   end
 
   # GET /appointments/new

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :videos
   namespace :admin do
     resources :users
-    root to: "users#index"
+    root to: "videos#index"
   end
   devise_for :users
   resources :users
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   resources :sections
   resources :appointments
   authenticated :user do
-    root to: 'therapists#index', as: :authenticated_root
+    root to: 'videos#index', as: :authenticated_root
   end
   root to: redirect('/users/sign_in')
 end
