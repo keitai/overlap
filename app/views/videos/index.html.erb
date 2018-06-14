@@ -6,8 +6,7 @@
 <table class="responsive-card-table">
   <thead>
     <tr>
-      <th>Title</th>
-	  <th>Edit Link</th>
+	  <th>Thumb</th>		
 	  <th>Description</th>
     </tr>
   </thead>
@@ -15,9 +14,8 @@
   <tbody>
     <% @videos.each do |video| %>
       <tr>
-        <td data-label="Title"><%= link_to video.title, video %></td>
-		<td data-label="Edit Links"><%= link_to 'Edit', edit_video_path(video) %></td>
-		<td data-label="Description"><%= video.description %></td>
+		<td data-label="Thumb"><%= link_to image_tag("https://img.youtube.com/vi/#{video.youtube_id}/0.jpg",style: 'max-height:200px;width:auto;'), video_path(video)  %> </td>
+		<td data-label="Description"><%= video.description %> / <%= link_to 'Edit', edit_video_path(video) %></td>
       </tr>
     <% end %>
   </tbody>

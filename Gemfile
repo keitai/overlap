@@ -30,6 +30,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'high_voltage'
 gem 'jquery-rails'
+gem 'rack-cors', require: 'rack/cors'
+
 gem 'simple_form'
 group :development do
   gem 'better_errors'
