@@ -29,6 +29,25 @@ body {
     border-radius:0px
 }
 
+.pad-25 {
+	padding-top:25px;
+}
+
+.rated {
+	background:#76B782;
+}
+
+.unrated {
+	background:#C94031;
+}
+
+.circle{
+     width: 10px;
+     height: 10px;
+     border-radius: 50%;
+     display: inline-block;
+}
+
 .top-bar {
 	font-size:13px !important;
 	border-bottom:1px solid #eee;

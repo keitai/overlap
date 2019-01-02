@@ -2,7 +2,7 @@
 <%= link_to 'Add a Video', new_video_path, :class => "button small float-right" if current_user.try(:admin?)%>
 
 
-<table class="responsive-card-table">
+<table class="responsive-card-table hover">
   <thead>
     <tr>
 	  <th>Video ID</th>		
@@ -19,9 +19,11 @@
 		  
 		<td data-label="Video ID"><%= link_to video.title, video_path(video)  %> | 
 			<% if current_user.has_rating?(video) %> 
-				RATED
+				<div class="circle rated"></div>
+				<span class="success">RATED</span>
 			<% else %>	 
-				NOT RATED
+				<div class="circle unrated"></div>
+				<span class="success">NOT RATED</span>
 			<% end %> 
 		</td>
 		
@@ -47,7 +49,7 @@
 			
 		</td> 	
 		<td data-label="Admin">
-			<%= link_to 'Edit', edit_video_path(video) %> 
+			<%= link_to 'Edit', edit_video_path(video) %> |
 			<%= link_to 'Delete', video_path(video), :method => :delete, :confirm => :true %> </td>  
 		<% end %>
       
