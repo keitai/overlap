@@ -1,0 +1,22 @@
+<%= simple_form_for(@rating) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+	  <fieldset class="fieldset large-12 cell">
+	    <legend>Type of Cue</legend>
+  <%= f.input :cue, as: :radio_buttons, collection: Rating.cues, label_method: :first, value_method: :first, label: false %>
+	  </fieldset>		 
+	  
+   	  <fieldset class="fieldset large-12 cell">
+   	    <legend>Level Of Cue</legend>
+ <%= f.input :level, as: :radio_buttons, collection: Rating.levels, label_method: :first, value_method: :first, label: false %>	  </fieldset>
+		 
+	 <%= f.hidden_field :video_id, :value => @video.id %>	
+	 <%= f.hidden_field :user_id, :value => current_user.id %>	 	  
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Save Rating and Go To Next Video", :class => "button small float-right" %>
+  </div>
+<% end %>
+

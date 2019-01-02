@@ -1,28 +1,61 @@
 <div class="form-inputs grid-x grid-padding-x">
 
-<div class="small-12 cell">
-	<div>
-	<p>
-		<strong><%= @video.title %></strong>&nbsp;:&nbsp;<%= @video.description %>
-	</p>
-	</div>
-
-
+<div class="small-6 cell">
 	<div class="responsive-embed widescreen">
-		<iframe src='https://www.youtube.com/embed/<%= @video.youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
-		
+		<iframe src='https://www.youtube.com/embed/<%= @video.youtube_id %>?autoplay=1&mute=1&theme=dark&autohide=1&modestbranding=1&showinfo=0' frameborder='0' allowfullscreen></iframe>		
 	</div>
+		<div class="small-12 cell">
+			<%= link_to "Previous Video", @video.previous, :class => "button small float-left" if @video.previous %>
+			<% if current_user.has_rating?(@video) %>
+		  	<% if @video.next %>
+		  	<%= link_to "Go to Next Video", @video.next, :class => "button small float-right" %>	  
+		  	<% else %>
+		  	<%= link_to "Back to Video List", videos_path, :class => "button small float-right" %>	  
+		  	<% end %>
+			<% end %>			
 	</div>
 
+	<% if current_user.try(:admin?) %>
+	<fieldset class="fieldset large-12 cell">
+		<legend>Video Stats (Admin View Only)</legend>
+		<p>Total Ratings: <%= @video.ratings.count %></p>
+		<p>Cue Counts:<br />
+			<% @vr.each do |v, r| %> 
+			<%= v %> : <%= r %>
+			(<%= "#{r.to_f / @video.ratings.count * 100}%"%> of total ratings)
+			<br /> 
+			<% end %>
+		</p>
+		<p>Level Counts:<br />
+			<% @vc.each do |v, c| %> 
+			<%= v %> : <%= c %>  
+			(<%= "#{c.to_f / @video.ratings.count * 100}%"%> of total ratings)
+			<br />
+			<% end %>
+		</p>
+	</fieldset>	
+	<% end %>
+	
+</div>
 
+<div class="small-6 cell">
+<% if current_user.has_rating?(@video) %>
+<fieldset class="fieldset large-12 cell">
+	<legend>Your Current Rating</legend>
+	Type of Cue: <%= @rated.cue %> <br />
+	Level of Cue: <%= @rated.level %> 
+</fieldset>	
+	<p>Update Your Rating for video#: #<%= @video.title %>:</p>
+
+	<%= render 'ratings/form', video: @video %>
+<% else %>
+	<p>Please Rate Video #<%= @video.title %>:</p>
+
+	<%= render 'ratings/form', rating: @rating %>
+
+<% end %>
 </div>
 
 
 
 
-<div class="small-12 cell">
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
-</div>
-
-</div>

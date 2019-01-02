@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Stimuli Hub" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "CARD R & D" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -15,12 +15,29 @@
   <body>
 	  
 	<%= render "layouts/navigation" %>
-	
+
 	<div class="container">
 	<div class="grid-container">
+		<% if flash[:notice] %>	
+		<div class="error_msgs">
+			<div class="bottom_a callout success">
+			<%= flash[:notice] %>
+			</div>
+		</div>
+		<% end %>
+		<% if flash[:alert] %>	
+		<div class="error_msgs">
+			<div class="bottom_a callout alert">
+			<%= flash[:alert] %>
+			</div>
+		</div>
+		<% end %>
 	<%= yield %>
 	</div>
 	</div>
 	
   </body>
+  <script>
+     setTimeout("$('.error_msgs').fadeOut('slow')", 1000)
+   </script>
 </html>

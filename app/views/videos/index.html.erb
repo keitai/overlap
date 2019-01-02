@@ -1,22 +1,57 @@
 <h5 class="float-left">Videos</h5>
-<%= link_to 'Add a Video', new_video_path, :class => "button small float-right" %>
-
+<%= link_to 'Add a Video', new_video_path, :class => "button small float-right" if current_user.try(:admin?)%>
 
 
 <table class="responsive-card-table">
   <thead>
     <tr>
-	  <th>Thumb</th>		
-	  <th>Description</th>
+	  <th>Video ID</th>		
+	  <% if current_user.try(:admin?) %>	 <th>Total Ratings</th> <% end %>	  
+	  <% if current_user.try(:admin?) %>	 <th>Cue Ratings</th> <% end %>	  
+	  <% if current_user.try(:admin?) %>	 <th>Level Ratings</th> <% end %>	  
+	  <% if current_user.try(:admin?) %>	 <th>Admin</th> <% end %>	  	  
     </tr>
   </thead>
 
   <tbody>
     <% @videos.each do |video| %>
       <tr>
-		<td data-label="Thumb"><%= link_to image_tag("https://img.youtube.com/vi/#{video.youtube_id}/0.jpg",style: 'max-height:200px;width:auto;'), video_path(video)  %> </td>
-		<td data-label="Description"><%= video.description %> / <%= link_to 'Edit', edit_video_path(video) %></td>
-      </tr>
+		  
+		<td data-label="Video ID"><%= link_to video.title, video_path(video)  %> | 
+			<% if current_user.has_rating?(video) %> 
+				RATED
+			<% else %>	 
+				NOT RATED
+			<% end %> 
+		</td>
+		
+		<% if current_user.try(:admin?) %>		
+		
+		<td data-label="Admin"> 
+		<%= pluralize video.ratings.count, "rating" %>		
+		</td>
+		
+		<td data-label="Admin"> 
+
+			<% video.ratings.all.group("cue").count.each do |key, value| %>
+				<%= key %> : <%= value %> (<%= "#{value.to_f / video.ratings.count * 100}%"%> of total ratings)<br />
+			<% end %>
+			
+			
+		</td>	
+		<td data-label="Admin"> 
+				
+			<% video.ratings.all.group("level").count.each do |key, value|  %>
+				<%= key %> : <%= value %> (<%= "#{value.to_f / video.ratings.count * 100}%"%> of total ratings)<br />
+			<% end %>		
+			
+		</td> 	
+		<td data-label="Admin">
+			<%= link_to 'Edit', edit_video_path(video) %> 
+			<%= link_to 'Delete', video_path(video), :method => :delete, :confirm => :true %> </td>  
+		<% end %>
+      
+	  </tr>
     <% end %>
   </tbody>
 </table>

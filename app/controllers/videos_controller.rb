@@ -10,7 +10,17 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-  end
+    if current_user.has_rating?(@video)
+      @rating = Rating.find_by(user_id: current_user, video_id: @video)  
+    else
+      @rating = Rating.new( :video => @video)
+    end
+    @rated = Rating.find_by(user_id: current_user, video_id: @video)  
+
+    @vr = @video.ratings.group(:cue).count    
+    @vc = @video.ratings.group(:level).count    
+    
+  end  
 
   # GET /videos/new
   def new
@@ -69,7 +79,7 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:title, :description, :category_id, :youtube_id)
+      params.require(:video).permit(:title, :description, :category_id, :youtube_id, :serial)
     end
 
 end

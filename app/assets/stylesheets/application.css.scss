@@ -20,6 +20,15 @@ body {
 	color:#333;
 }
 
+.bottom_a {
+    position:absolute; 
+    bottom: 50px; 
+    left: 50px; 
+    width: 50%;
+    z-index:9999; 
+    border-radius:0px
+}
+
 .top-bar {
 	font-size:13px !important;
 	border-bottom:1px solid #eee;

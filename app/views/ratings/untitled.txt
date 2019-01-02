@@ -1,0 +1,28 @@
+<h5 class="float-left">Ratings</h5>
+
+<table class="responsive-card-table">
+  <thead>
+    <tr>
+	  <th>Rating</th>	
+	  <th>Video Serial</th>			
+	  <th>User</th>		
+	  <th>Admin</th>			  
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ratings.each do |rating| %>
+      <tr>
+		<td data-label="Rating">Cue: <%= rating.cue %> / <%= rating.level %></td>
+		<td data-label="Video Serial"><%= rating.video.serial %></td>
+		<td data-label="User"><%= rating.user.email %></td>
+		<td data-label="Admin"><%= link_to 'Edit', edit_rating_path(rating) %> <%= link_to 'Delete', rating_path(rating), :method => :delete, :confirm => :true %>
+</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
