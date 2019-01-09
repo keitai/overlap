@@ -2,7 +2,7 @@ class User < ApplicationRecord
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
   has_many :notes
-  has_many :ratings, inverse_of: :user
+  has_many :ratings, inverse_of: :user, :dependent => :delete_all
   
   def set_default_role
     self.role ||= :user

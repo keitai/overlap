@@ -3,11 +3,13 @@ Thank you for taking the time to help out our research team. Please begin with v
 </div>
 
 
-<h5 class="float-left">Videos</h5>
 <%= link_to 'Add a Video', new_video_path, :class => "button small float-right" if current_user.try(:admin?)%>
 
 
 <table class="responsive-card-table hover">
+   <ul class="menu" data-smooth-scroll>
+     <li><a href="#unrated", class="button small">Jump to your last rated video</a></li>
+   </ul>
   <thead>
     <tr>
 	  <th>Video ID</th>		
@@ -27,8 +29,10 @@ Thank you for taking the time to help out our research team. Please begin with v
 				<div class="circle rated"></div>
 				<span class="success">RATED</span>
 			<% else %>	 
+
 				<div class="circle unrated"></div>
-				<span class="success">NOT RATED</span>
+				<span class="success">NOT RATED</span>				
+				<div id="unrated"></div>
 			<% end %> 
 		</td>
 		
@@ -37,11 +41,11 @@ Thank you for taking the time to help out our research team. Please begin with v
 		<td data-label="Admin"> 
 		<%= pluralize video.ratings.count, "rating" %>		
 		</td>
-		
+
 		<td data-label="Admin"> 
 
 			<% video.ratings.all.group("cue").count.each do |key, value| %>
-				<%= key %> : <%= value %> (<%= "#{value.to_f / video.ratings.count * 100}%"%> of total ratings)<br />
+				<%= key %> : <%= value %> (<%= "#{(value.to_f / video.ratings.count * 100).truncate(2).to_f}%"%> of total ratings)<br />
 			<% end %>
 			
 			
@@ -49,7 +53,7 @@ Thank you for taking the time to help out our research team. Please begin with v
 		<td data-label="Admin"> 
 				
 			<% video.ratings.all.group("level").count.each do |key, value|  %>
-				<%= key %> : <%= value %> (<%= "#{value.to_f / video.ratings.count * 100}%"%> of total ratings)<br />
+				<%= key %> : <%= value %> (<%= "#{(value.to_f / video.ratings.count * 100).truncate(2).to_f}%"%> of total ratings)<br />
 			<% end %>		
 			
 		</td> 	
