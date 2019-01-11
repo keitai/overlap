@@ -5,11 +5,33 @@
 	  <fieldset class="fieldset large-12 cell">
 	    <legend>Type of Cue</legend>
   <%= f.input :cue, as: :radio_buttons, collection: Rating.cues, label_method: :first, value_method: :first, label: false %>
-	  </fieldset>		 
-	  
+	  </fieldset>		 	
+	   
    	  <fieldset class="fieldset large-12 cell">
    	    <legend>Level Of Cue</legend>
- <%= f.input :level, as: :radio_buttons, collection: Rating.levels, label_method: :first, value_method: :first, label: false %>	  </fieldset>
+      	 <ul class='likert'>		
+		   <li>
+		   <%= f.radio_button :level, 1 %>
+		   <%= f.label(:level, "1 (subtle)") %>
+		   </li>
+		   <li>
+		   <%= f.radio_button :level, 2 %>
+		   <%= f.label(:level, "2") %>		  
+		   </li>		   
+		   <li>		   
+		   <%= f.radio_button :level, 3 %>
+		   <%= f.label(:level, "3 (normal)") %>
+		   </li>		   
+		   <li>		   
+		   <%= f.radio_button :level, 4 %>
+		   <%= f.label(:level, "4") %>		 
+		   </li>		   
+		   <li>		   
+		   <%= f.radio_button :level, 5 %>
+		   <%= f.label(:level, "5 (overt)") %>		   
+		   </li>		   
+		  </ul>
+	   </fieldset>	  	 
 		 
 	 <%= f.hidden_field :video_id, :value => @video.id %>	
 	 <%= f.hidden_field :user_id, :value => current_user.id %>	 	  

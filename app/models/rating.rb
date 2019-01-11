@@ -4,7 +4,10 @@ class Rating < ApplicationRecord
   
   validates_presence_of :cue, :level
 
-  enum cue: {approval: 1, dissaproval: 2, other: 3}
-  enum level: {mixed: 0, subtle: 1, normal: 2, overt: 3}
+  enum cue: {approval: 1, dissaproval: 2}
+
+  def display
+    
+  end
 
 end
