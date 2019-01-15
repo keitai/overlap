@@ -61,6 +61,8 @@
 //  56. Xy Grid
 
 @import 'util/util';
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 
 // 1. Global
 // ---------
@@ -81,8 +83,8 @@ $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
-$body-font-color: #444444;
-$body-font-family: Helvetica, Roboto, Arial, sans-serif;
+$body-font-color: #333333;
+$body-font-family: Lato, Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -132,7 +134,7 @@ $block-grid-max: 8;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Helvetica, Roboto, Arial, sans-serif;
+$font-family-monospace: Lato, Helvetica, Roboto, Arial, sans-serif;
 $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
