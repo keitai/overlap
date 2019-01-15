@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :videos
   resources :ratings
+
+
+  devise_for :users, controllers: { registrations: 'registrations' }
   namespace :admin do
     resources :users
     root to: "videos#index"
-  end
-  devise_for :users
+  end  
   resources :users
   resources :therapists
   resources :notes

@@ -2,19 +2,16 @@
 	&nbsp;
 </div>
 <div class="logform large-6 columns">
-  <h5>Update Your Password or Email</h5>
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
-    <%= devise_error_messages! %>
+  <h5>Edit Your Account</h5>
+	<%= form_for(@user) do |f| %>
 
     <div class="form-group">
+	  <%= @user.email %>
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+      <%= f.email_field :email, class: 'form-control', input_html: { autocomplete: 'off' } %>
     </div>
     <fieldset>
-      <p>Enter a new password here.</p>
+      <p>Leave these fields blank if you don't want to change your password.</p>
       <div class="form-group">
         <%= f.label :password %>
         <%= f.password_field :password, :autocomplete => 'off', class: 'form-control' %>

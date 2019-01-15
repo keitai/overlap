@@ -7,7 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "CARD R & D" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>	
 	<script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>	
     <%= csrf_meta_tags %>
   </head>
@@ -32,12 +32,16 @@
 			</div>
 		</div>
 		<% end %>
+		
 	<%= yield %>
 	</div>
 	</div>
+
+	
+	<%= render "layouts/footer" %>
 	
   </body>
   <script>
-     setTimeout("$('.error_msgs').fadeOut('slow')", 1000)
+     setTimeout("$('.error_msgs').fadeOut('slow')", 3000)
    </script>
 </html>
