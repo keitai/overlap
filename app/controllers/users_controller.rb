@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :admin_only, :except => :show
 
   def index
-    @users = User.all
+    @users = User.order("email ASC")
   end
 
   def show
