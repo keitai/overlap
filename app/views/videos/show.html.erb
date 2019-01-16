@@ -16,8 +16,8 @@
 	</div>
 
 	<% if current_user.try(:admin?) %>
-	<fieldset class="fieldset large-12 cell">
-		<legend>Video Stats (Admin View Only)</legend>
+	<h5 class="video">Video Stats (Admin View Only)</h5>	
+	<div class="callout panel large-12 cell margin-top">
 		<p>Total Ratings: <%= @video.ratings.count %></p>
 		<p>Cue Counts:<br />
 			<% @vr.each do |v, r| %> 
@@ -33,23 +33,23 @@
 			<br />
 			<% end %>
 		</p>
-	</fieldset>	
+	</div>	
 	<% end %>
 	
 </div>
 
 <div class="small-6 cell">
 <% if current_user.has_rating?(@video) %>
-<fieldset class="fieldset large-12 cell">
-	<legend>Your Current Rating</legend>
+	<h5 class="video">Your Current Rating</h5>
+<div class="callout panel large-12 cell">
 	Type of Cue: <%= @rated.cue %> <br />
 	Level of Cue: <%= @rated.level %> 
-</fieldset>	
-	<p>Update Your Rating for video#: #<%= @video.title %>:</p>
+</div>	
+	<h5 class="video">Update Your Rating for video#: #<%= @video.title %>:</h5>
 
 	<%= render 'ratings/form', video: @video %>
 <% else %>
-	<p>Please Rate Video #<%= @video.title %>:</p>
+		<h5 class="video">Please Rate Video #<%= @video.title %>:</h5>
 
 	<%= render 'ratings/form', rating: @rating %>
 
