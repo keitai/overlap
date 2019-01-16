@@ -4,14 +4,30 @@ Thank you for taking the time to help out our research team. Please begin with v
 </div>
 
 
+<div class="form-inputs grid-x grid-padding-x">
+<div class="large-3 cell">
+<a href="#unrated", class="button small float-left">Jump to your last rated video</a>
+</div>
+<div class="large-6 cell">
+<ul class="stats-list">
+  <li>
+    <%= @videos.count %> <span class="stats-list-label">Total Videos</span>
+  </li>
+  <li class="stats-list-positive">
+	<%= current_user.ratings.count %>  <span class="stats-list-label">Rated</span>
+  </li>
+  <li class="stats-list-negative">
+    <%= "#{ @videos.count - current_user.ratings.count }" %> <span class="stats-list-label">Unrated</span>
+  </li>
+</ul>
+</div>
+<div class="large-3 cell">
 <%= link_to 'Add a Video', new_video_path, :class => "button small float-right" if current_user.try(:admin?)%>
+</div>
+</div>
 
 
 <table class="table-expand hover unstriped">
-   <ul class="menu" data-smooth-scroll>
-     <li><a href="#unrated", class="button small float-left">Jump to your last rated video</a></li>
-   </ul>
-   <br />
   <thead>
     <tr>
 	  <th>Video ID</th>		
