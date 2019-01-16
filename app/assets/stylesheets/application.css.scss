@@ -141,8 +141,8 @@ form .buttons .submit:hover {background-color: #14892c;}
     border-radius:0px
 }
 
-.pad-25 {
-	padding-top:25px;
+.pad {
+	padding-top:15px;
 }
 
 .rated {
@@ -732,7 +732,7 @@ form .buttons .submit:hover {background-color: #14892c;}
 .card-info {
   background: #fefefe;
   border: 1px solid #8a8a8a;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   margin: 1rem 0 2rem 0;
   overflow: hidden;
   border-radius: 0;

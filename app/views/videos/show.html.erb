@@ -1,6 +1,6 @@
 <div class="form-inputs grid-x grid-padding-x">
 
-<div class="small-6 cell pad-25">
+<div class="small-6 cell pad">
 	<div class="responsive-embed widescreen">
 		<iframe src='https://www.youtube.com/embed/<%= @video.youtube_id %>?autoplay=1&mute=1&theme=dark&autohide=1&modestbranding=1&showinfo=0' frameborder='0' allowfullscreen></iframe>		
 	</div>
@@ -15,9 +15,10 @@
 			<% end %>			
 	</div>
 
-	<% if current_user.try(:admin?) %>
-	<h5 class="video">Video Stats (Admin View Only)</h5>	
-	<div class="callout panel large-12 cell margin-top">
+	<% if current_user.try(:admin?) %>	
+	<div class="large-12 cell card-info primary">
+	  <div class="card-info-content">
+	    <h3 class="lead">Video Stats</h3>
 		<p>Total Ratings: <%= @video.ratings.count %></p>
 		<p>Cue Counts:<br />
 			<% @vr.each do |v, r| %> 
@@ -33,24 +34,24 @@
 			<br />
 			<% end %>
 		</p>
+	  </div>
 	</div>	
 	<% end %>
 	
 </div>
 
-<div class="small-6 cell">
+<div class="large-6 cell">
 <% if current_user.has_rating?(@video) %>
-	<h5 class="video">Your Current Rating</h5>
-<div class="callout panel large-12 cell">
+<div class="large-12 cell card-info warning">
+<div class="card-info-content">
+	<h3 class="lead">Your Current Rating</h3>
 	Type of Cue: <%= @rated.cue %> <br />
 	Level of Cue: <%= @rated.level %> 
-</div>	
-	<h5 class="video">Update Your Rating for video#: #<%= @video.title %>:</h5>
+</div>
+</div>
 
 	<%= render 'ratings/form', video: @video %>
 <% else %>
-		<h5 class="video">Please Rate Video #<%= @video.title %>:</h5>
-
 	<%= render 'ratings/form', rating: @rating %>
 
 <% end %>

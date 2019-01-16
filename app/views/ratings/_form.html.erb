@@ -2,14 +2,17 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-	  <h5 class="video">Type of Cue</h5>
-	  <div class="callout panel large-12 cell">
-  <%= f.input :cue, as: :radio_buttons, collection: Rating.cues, label_method: :first, value_method: :first, label: false %>
-	  </div>		 	
-   	  
-	  <h5 class="video">Level Of Cue</h5>	   
-   	  <div class="callout panel large-12 cell">
+	  <div class="large-12 cell card-info primary">
+	  <div class="card-info-content">
+		<h5 class="lead">Type of Cue:</h5>
+		<%= f.input :cue, as: :radio_buttons, collection: Rating.cues, label_method: :first, value_method: :first, label: false %>
+	  	 
+	  </div>
+	  </div>
 
+	  <div class="large-12 cell card-info primary">
+	  <div class="card-info-content">
+		<h5 class="lead">Level of Cue:</h5>
       	 <ul class='likert'>		
 		   <li>
 		   <%= f.radio_button :level, 1 %>
@@ -32,7 +35,8 @@
 		   <%= f.label(:level, "5 (overt)") %>		   
 		   </li>		   
 		  </ul>
-	   </div>	  	 
+	   </div>	 
+	   </div> 	 
 		 
 	 <%= f.hidden_field :video_id, :value => @video.id %>	
 	 <%= f.hidden_field :user_id, :value => current_user.id %>	 	  
