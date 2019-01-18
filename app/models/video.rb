@@ -4,6 +4,8 @@ class Video < ApplicationRecord
   
   
 
-
+  def to_param
+     "#{id}-#{serial}-cue"
+   end
   
 end
