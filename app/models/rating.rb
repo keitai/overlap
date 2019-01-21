@@ -4,7 +4,7 @@ class Rating < ApplicationRecord
   
   validates_presence_of :cue, :level
 
-  enum cue: {approval: 1, dissaproval: 2}
+  enum cue: {approval: 1, disapproval: 2}
 
   def display
     
