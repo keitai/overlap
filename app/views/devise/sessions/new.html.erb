@@ -1,8 +1,13 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
 <%= devise_error_messages! %>
+  <div class="row collapse expanded">
+	      <div class="small-3 medium-3 column">
+		  </div>
+    <div class="small-6 medium-6 column">
+
 <div class="login-box">
   <div class="row collapse expanded">
-    <div class="small-12 medium-6 column small-order-2 medium-order-1">
+    <div class="small-12 medium-12 column">
       <div class="login-box-form-section">
         <h1 class="login-box-title">Sign In</h1>
          <%= f.email_field :email, class: 'login-box-input', placeholder: "CARD Email" %>
@@ -27,12 +32,12 @@
 	   	</div>
       </div>    
     </div>
-    <div class="small-12 medium-6 column small-order-1 medium-order-2 login-box-social-section">
-      <div class="login-box-social-section-inner">
 
-      </div>
-    </div>
   </div>
+</div>
+	      <div class="small-3 medium-3 column">
+		  </div>
+</div>
 </div>
   <% end %>
 
