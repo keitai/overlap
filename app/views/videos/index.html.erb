@@ -6,9 +6,12 @@
   </div>
   <div class="card-info-content">
     <h3 class="lead">Thank You!</h3>
-    <p>Thank you for taking the time to help our research team. Please begin with video 001. You will rate each video once, and it will automatically move you on to the next video. If you need to go back to update a rating, you can do so by selecting the "back" button on the individual video page or by coming back to this page and selecting the video from the list. Your progress is automatically saved and you can stop and continue at any point. All rated videos will be listed below and you can pick up with the next un-rated video in the sequence. If you have any questions please let me know at c.miyake@centerforautism.com</p>
+    <p>Thank you for taking the time to help our research team. Please begin by pressing the blue button below. You will rate each video once, and it will automatically move you on to the next video in a random sequence. Your progress is automatically saved and you can stop and continue at any point. All rated videos will are listed and you can pick up with a random video using the blue button below. If you have any questions please let me know at c.miyake@centerforautism.com</p>
 	<p>
 		<strong>*Please note this site uses youtube to host it's videos so it will not work on CARD iPads.</strong>
+	</p>
+	<p>
+		<strong>*There is no sound on the videos.</strong>
 	</p>
   </div>
 </div>
@@ -16,9 +19,11 @@
 
 <div class="form-inputs grid-x grid-padding-x">
 <div class="large-3 cell">
-
-<a href="#unrated", class="button small float-left">Jump to your last rated video</a>
-
+<% if @rated.present? %>
+<%= link_to "Rate Your Next Video", @random, :class => "button small float-left" %>
+<% else %>
+<%= link_to "Get Started Rating", @random, :class => "button small float-left" %>
+<% end %>
 </div>
 <div class="large-6 cell">
 <ul class="stats-list">

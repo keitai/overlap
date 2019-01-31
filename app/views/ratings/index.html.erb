@@ -1,0 +1,22 @@
+	  <h5 class="float-left">Ratings (<%= @ratings.count %>)</h5>
+    <div>		
+		<table class="responsive-card-table">
+		<thead>
+			<tr>
+				<th>User</th>
+				<th>Rating</th>
+				<th>Edit Links</th>
+			</tr>
+		</thead>
+        <tbody>
+          <% @ratings.each do |rating| %>
+            <tr>
+              <%= render rating %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+

@@ -1,4 +1,5 @@
-<%= simple_form_for(@rating) do |f| %>
+<%= simple_form_for([@video, @rating]) do |f| %>
+
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -37,13 +38,13 @@
 		  </ul>
 	   </div>	 
 	   </div> 	 
-		 
+
 	 <%= f.hidden_field :video_id, :value => @video.id %>	
 	 <%= f.hidden_field :user_id, :value => current_user.id %>	 	  
   </div>
 
   <div class="form-actions">
-    <%= f.submit "Save Rating and Go To Next Video", :class => "button small float-right" %>
+    <%= f.submit "Save Rating and Go To Next Unrated Video", :class => "button small float-right" %>
   </div>
 <% end %>
 

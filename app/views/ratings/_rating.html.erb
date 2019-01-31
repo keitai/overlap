@@ -1,0 +1,13 @@
+<td data-label="user">
+  <%= rating.user.email %>
+</td>
+<td data-label="rating">
+  <%= rating.video.serial%>
+</td>
+<td data-label="edit links">
+  <%= link_to("| Delete rating", video_rating_path(rating.video, rating), :method => :delete) %>
+</td>
+
+
+
+

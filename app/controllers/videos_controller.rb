@@ -5,11 +5,27 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.order("serial ASC")
+    @all = Video.all       
+    @rated = Video.left_outer_joins(:ratings).where( ratings: { user_id: current_user })        
+    @leftover = @all - @rated
+    @random = @leftover.sample
+    #plucks random sample from remaining videos
+    
   end
 
   # GET /videos/1
   # GET /videos/1.json
-  def show
+  def show        
+    @all = Video.all       
+    @rated = Video.left_outer_joins(:ratings).where( ratings: { user_id: current_user })        
+    @leftover = @all - @rated
+
+
+    @random = @leftover.sample
+    #plucks random sample from remaining videos
+
+
+  
     if current_user.has_rating?(@video)
       @rating = Rating.find_by(user_id: current_user, video_id: @video)  
     else

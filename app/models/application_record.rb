@@ -10,4 +10,8 @@ class ApplicationRecord < ActiveRecord::Base
     Video.where(["serial > ?", serial]).first
   end
   
+
+
+
+  
 end

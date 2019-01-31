@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :videos
-  resources :ratings
+  resources :videos do
+    resources :ratings
+  end
 
 
   devise_for :users, controllers: { registrations: 'registrations' }
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
     root to: 'videos#index', as: :authenticated_root
   end
   root to: redirect('/users/sign_in')
+  
 end

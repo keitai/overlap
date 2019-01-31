@@ -3,9 +3,5 @@ class Video < ApplicationRecord
   has_many :ratings, :dependent => :delete_all
   
   
-
-  def to_param
-     "#{id}-#{serial}-cue"
-   end
   
 end
